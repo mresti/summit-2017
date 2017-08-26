@@ -14,9 +14,10 @@ install:
 - bower install
 script:
 - polymer build
-deploy:
-- provider: firebase
-  skip_cleanup: true
-  token:
-    secure: OvJvcknrH+OTfyKNNObVZnVPuKsxtviDR0KOUDU6S6MfVvGKBD5Ri/xoaOZ3rNFZQ2G7hO+iAUXrnLOnfU8xC9oC1I597Ot0Sbu5A2vh2AjQqaNkTh/XVHl3nMvrws3kDUT1Ihj3DmZmKORnNRj7rk2AabTzj9ZBFrOlLYu2nXCeCcxr4Lekjc28mTxRfebpiF+cmSG/SBRP5R41dWLsvkMXCw1khPN2ED9biYBAzrBjWZkqfYbV4CzvHuLR9M3dme959SFlYRmHh9BmzJ8f7VVzCwAm2plHHmjvD1pVnPQrpngHcEyTnH+oxOkJmUY6CzIKmXpoIHPFwevgEfOk9idL1ZxSiw8stN3EKay3oIU66tHIhe7d2S/Oje10Aq+iAExXyCt3/yQNvDA2yrux4/N+UOzfm2xaU52iwHxu/XZJqvutOc9VHMEr0n22MvYsUtsYFxeufTU60e2oUq/zlcYa986pQOgg/CNgkQPAIH34MqCE9LA1JI6jMPE0kf+uaUJLCjX39C/rm8iPwIQwr9RiTA7LEPSC8XnZz8K+ACzz8OjDok+RClCxxefQJjoknVeQuqrDfX56n1Ywvb8urhQRMp+pxAyS8djsGzxKONsqW4iQ4nFnlBlIezlDJmCx/kv+ATETDMbgXyJGbr6EEBk+yYbLoC3boGFOr1EW/O8=
-  project: polymer-web
+after_success:
+  - firebase deploy --token $FIREBASE_TOKEN
+
+notifications:
+  email:
+    on_failure: change
+    on_success: change
