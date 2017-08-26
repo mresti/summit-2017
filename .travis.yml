@@ -5,36 +5,20 @@ node_js: stable
 cache: yarn
 branches:
   except:
-    - /^v\d/
+  - "/^v\\d/"
 install:
-  - npm install -g firebase-tools
-  - npm install -g polymer-cli
-  - yarn install
-  - yarn global add bower
-  - bower install
-
+- npm install -g firebase-tools
+- npm install -g polymer-cli
+- yarn install
+- yarn global add bower
+- bower install
 script:
-  - polymer build
-
-after_success:
-  - firebase deploy --token $FIREBASE_TOKEN --non-interactive
-
-notifications:
-  email:
-    on_failure: change
-    on_success: change
-
-# script:
-#   - yarn run lint
-#   # - yarn run test
-#   - yarn run test:integration
-# before_deploy:
-#   - yarn run build
-# deploy:
-#   - provider: firebase
-#     skip_cleanup: true
-#     token:
-#       secure: NvVH4QWMWT1CPDvPVPcT/Acn1mmU2WpkCg8j1rVjioDXX2aUEUVad7fKUsEXvkgOBAR1NSk5BpkhQXO6t1tt5fFrwOq60+pOe0Awy/p8BwsfMGFLOa9Kh/BDLYntqpmLrOFM37U/DIxmlPpevajFX+pNs4Iu4LkLvWR5fSce8aQBORgUyZSwvdbjgYmPmr5zEvchcV7UUBlC6g9x/KtktkvWe1jrucUeYqGcvTnG1WxRp5hB0b5pjS32MOoFhbVNL1wAJnvwZj9rO9l+E8fY2RzUA2PnYscm3oCpsAyYOTRUyscjRnVUm0exqoIz8PuLTQle4R7NVxFVNx3+pzifz0Xl5NskGkuUqumYXrCS9jeFGk1O0TaGyfvQ9s5ycKPq66L2Drpg5dyCEkPp/6UjAc2eQwsby3M40EqQnMUx5u5Wp+R+/XvSmC96loGRmEelgQY964TU1Gq74U8yhPV/IfMgFZ32SmhoOvzfpP4p99aklaDY4MBkEumGefVRQweqsDjL8TLTgD6bBvHHIcvU8Iudt5bR5sYDgf+x4JEN5jSCtNzNeLyBUkExqamAJ3xvlhVnTkBE8sjgeHh1+ovZ25oV7ozzsDS6uKMlKPfk6gYvABbBIi/tkYzQgQJwsAs0VMX29aXgwGLk8aGq+uNcWIhXNVfadl8e/KPNtkkX+pI=
-#     project: gdg-es
-#     on:
-#       branch: master
+- polymer build
+# after_success:
+# - firebase deploy --token $FIREBASE_TOKEN --non-interactive
+deploy:
+  - provider: firebase
+    skip_cleanup: true
+    token:
+      secure: WccIreRnzxRAOc6SMwo26h9zAGrsJcPei7TRfSUTh55p5Kxe8sGG1I5jDuue4TBqnE63OiGrBeJdDD7OGJWUgOnNjBiZo5JIWsXGeKN/4XGLufQU7NA3dg9UAQSjMtJQi7Nya/BXDnruE7FwxoflS0Kk2Vv9f0kwSgHx6QvFb7G4ZBhp6sDakXX74FQb6MIhPQNuDQ+4qawyTyir6bugBCcMYJJjSMwWxaLNw/o/BRN2ncflNpY6pL/kZnJduuEjIuwtRcL+kgTVr0HS9g8MRqbGE4bGR/Wz8YvRacQjAjNibcdf92DoYC8h+essIlCazoHOXtWKnRPQy4LA7MzTza/eRpSOrq5N75SXZjVN2d2AP2Eu32jR3RO3MY2Ua0nCX9rNrd6NWIgdJ9YlSSzrWxM7ZvKxXj2yd7tZfhyKJUxzeI6NHJPZTjsCndmCoB81m2hpjAXfGmgjz0DzEmzeK/wRaySG490tErRAOBVLQWw8pSLjPLj3EJmW+rEB+IYDgHAdqfjc25VbB/3beSFqcrB7Bul/GLF5HfiKqN3mrOCpeU3Tb9oTiAup0PVkQrTCjVFLcJboAPdk6+6D3WY+7ZxUxZcHRNkABww9B9OzUmAyBp/KOzTgd8PdTF4ZCvCdP5BFtT2vR2qWdWz20se6sSR3sthrUf4SJ0jtn5HMJo8=
+    project: polymer-web
